@@ -366,6 +366,30 @@ CFG_LDPATH_x86_64-unknown-freebsd :=
 CFG_RUN_x86_64-unknown-freebsd=$(2)
 CFG_RUN_TARG_x86_64-unknown-freebsd=$(call CFG_RUN_x86_64-unknown-freebsd,,$(2))
 
+# i686-unknown-freebsd configuration
+CC_i686-unknown-freebsd=$(CC)
+CXX_i686-unknown-freebsd=$(CXX)
+CPP_i686-unknown-freebsd=$(CPP)
+AR_i686-unknown-freebsd=$(AR)
+CFG_LIB_NAME_i686-unknown-freebsd=lib$(1).so
+CFG_LIB_GLOB_i686-unknown-freebsd=lib$(1)-*.so
+CFG_LIB_DSYM_GLOB_i686-unknown-freebsd=$(1)-*.dylib.dSYM
+CFG_GCCISH_CFLAGS_i686-unknown-freebsd := -Wall -Werror -g -fPIC -I/usr/local/include
+CFG_GCCISH_LINK_FLAGS_i686-unknown-freebsd := -shared -fPIC -g -lpthread -lrt
+CFG_GCCISH_DEF_FLAG_i686-unknown-freebsd := -Wl,--export-dynamic,--dynamic-list=
+CFG_GCCISH_PRE_LIB_FLAGS_i686-unknown-freebsd := -Wl,-whole-archive
+CFG_GCCISH_POST_LIB_FLAGS_i686-unknown-freebsd := -Wl,-no-whole-archive
+CFG_DEF_SUFFIX_i686-unknown-freebsd := .bsd.def
+CFG_INSTALL_NAME_i686-unknown-freebsd =
+CFG_LIBUV_LINK_FLAGS_i686-unknown-freebsd := -lpthread -lkvm
+CFG_EXE_SUFFIX_i686-unknown-freebsd :=
+CFG_WINDOWSY_i686-unknown-freebsd :=
+CFG_UNIXY_i686-unknown-freebsd := 1
+CFG_PATH_MUNGE_i686-unknown-freebsd :=
+CFG_LDPATH_i686-unknown-freebsd :=
+CFG_RUN_i686-unknown-freebsd=$(2)
+CFG_RUN_TARG_i686-unknown-freebsd=$(call CFG_RUN_i686-unknown-freebsd,,$(2))
+
 
 define CFG_MAKE_TOOLCHAIN
   CFG_COMPILE_C_$(1) = $$(CC_$(1))  \
